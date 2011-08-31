@@ -71,4 +71,18 @@ public class SignInPageTest {
 		this.tester.assertRenderedPage(SignInPage.class);
 		this.tester.assertErrorMessages("サインインIDまたはパスワードが違います");
 	}
+
+	@Test
+	public void testSignInSuccessed() {
+		this.tester.startPage(IndexPage.class);
+		this.tester.assertRenderedPage(SignInPage.class);
+
+		FormTester signInForm = this.tester.newFormTester("signInForm");
+		signInForm.setValue("signInId", "signInId");
+		signInForm.setValue("password", "password");
+		signInForm.submit("signIn");
+
+		this.tester.assertRenderedPage(IndexPage.class);
+		this.tester.assertNoErrorMessage();
+	}
 }
