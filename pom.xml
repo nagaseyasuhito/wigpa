@@ -4,13 +4,24 @@
 	<groupId>com.github.nagaseyasuhito</groupId>
 	<artifactId>wigpa</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>0.0.1-SNAPSHOT</version>
 
 	<name>wigpa</name>
 	<description>Wigpa is toolset of Wicket, JPA2.0 and Guice.</description>
 	<organization>
 		<name>nagaseyasuhito Architekt works.</name>
 	</organization>
+
+	<distributionManagement>
+		<repository>
+			<id>release</id>
+			<url>file://${basedir}/nagaseyasuhito.github.com/m2-repo/</url>
+		</repository>
+		<snapshotRepository>
+			<id>snapshot</id>
+			<url>file://${basedir}/nagaseyasuhito.github.com/m2-repo/</url>
+		</snapshotRepository>
+	</distributionManagement>
 
 	<repositories>
 		<repository>
@@ -22,7 +33,7 @@
 			<url>http://guice-maven.googlecode.com/svn/trunk</url>
 		</repository>
 		<repository>
-			<id>googlecode</id>
+			<id>jqwicket</id>
 			<url>http://jqwicket.googlecode.com/svn/m2-repo/releases/</url>
 		</repository>
 	</repositories>
@@ -139,7 +150,12 @@
 			<version>${ch.qos.logback.logback-classic.version}</version>
 		</dependency>
 
-
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+			<scope>provided</scope>
+		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>

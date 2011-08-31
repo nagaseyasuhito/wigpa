@@ -1,4 +1,4 @@
-package com.github.nagaseyasuhito.wigpa.persist.dao;
+package com.github.nagaseyasuhito.wigpa.test;
 
 import javax.persistence.EntityManager;
 
@@ -15,9 +15,9 @@ import com.wideplay.warp.persist.PersistenceService;
 import com.wideplay.warp.persist.UnitOfWork;
 import com.wideplay.warp.persist.jpa.JpaUnit;
 
-public class WigpaRunner extends BlockJUnit4ClassRunner {
+public class PersistRunner extends BlockJUnit4ClassRunner {
 
-	public WigpaRunner(Class<?> klass) throws InitializationError {
+	public PersistRunner(Class<?> klass) throws InitializationError {
 		super(klass);
 	}
 

@@ -12,9 +12,10 @@ import com.github.nagaseyasuhito.wigpa.persist.dao.PredicateBuilder.Null;
 import com.github.nagaseyasuhito.wigpa.persist.dao.PredicateBuilder.Or;
 import com.github.nagaseyasuhito.wigpa.persist.entity.Task;
 import com.github.nagaseyasuhito.wigpa.persist.entity.User;
+import com.github.nagaseyasuhito.wigpa.test.PersistRunner;
 import com.google.inject.Inject;
 
-@RunWith(WigpaRunner.class)
+@RunWith(PersistRunner.class)
 public class UserDaoTest {
 
 	@Inject
