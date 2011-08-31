@@ -1,19 +1,33 @@
 package com.github.nagaseyasuhito.wigpa.wicket.page;
 
+import org.apache.wicket.injection.Injector;
 import org.apache.wicket.util.tester.FormTester;
 import org.apache.wicket.util.tester.WicketTester;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.github.nagaseyasuhito.wigpa.persist.dao.UserDao;
+import com.github.nagaseyasuhito.wigpa.persist.entity.User;
 import com.github.nagaseyasuhito.wigpa.wicket.TestWebApplication;
+import com.google.inject.Inject;
 
 public class SignInPageTest {
 
 	private WicketTester tester;
 
+	@Inject
+	private UserDao userDao;
+
 	@Before
 	public void before() {
 		this.tester = new WicketTester(new TestWebApplication());
+
+		Injector.get().inject(this);
+
+		User user = new User();
+		user.setSignInId("signInId");
+		user.setPassword("password");
+		this.userDao.persist(user);
 	}
 
 	@Test

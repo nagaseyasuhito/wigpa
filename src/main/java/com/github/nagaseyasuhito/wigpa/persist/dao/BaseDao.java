@@ -5,7 +5,6 @@ import java.util.SortedMap;
 
 import com.github.nagaseyasuhito.wigpa.persist.entity.BaseEntity;
 
-
 public interface BaseDao<T extends BaseEntity> {
 	long countByCriteria(T criteria);
 

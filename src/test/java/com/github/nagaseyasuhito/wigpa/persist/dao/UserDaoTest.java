@@ -2,7 +2,6 @@ package com.github.nagaseyasuhito.wigpa.persist.dao;
 
 import javax.persistence.PersistenceException;
 
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 

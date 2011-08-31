@@ -18,7 +18,6 @@ import javax.persistence.criteria.Path;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
-
 import com.github.nagaseyasuhito.wigpa.persist.dao.BaseDao;
 import com.github.nagaseyasuhito.wigpa.persist.dao.PredicateBuilder.And;
 import com.github.nagaseyasuhito.wigpa.persist.dao.PredicateBuilder.Between;

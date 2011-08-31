@@ -53,5 +53,4 @@ public class PersistRunner extends BlockJUnit4ClassRunner {
 			}
 		};
 	}
-
 }

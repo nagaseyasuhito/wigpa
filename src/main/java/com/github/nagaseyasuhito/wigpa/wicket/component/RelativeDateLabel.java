@@ -1,6 +1,5 @@
 package com.github.nagaseyasuhito.wigpa.wicket.component;
 
-
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.util.convert.IConverter;
@@ -25,6 +24,6 @@ public class RelativeDateLabel extends Label {
 	@SuppressWarnings("unchecked")
 	@Override
 	public <C> IConverter<C> getConverter(Class<C> type) {
-		return (IConverter<C>) new RelativeDateConverter();
+		return (IConverter<C>) new RelativeDateConverter(this);
 	}
 }

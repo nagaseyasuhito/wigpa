@@ -23,7 +23,6 @@ public class TestSession extends WigpaWebSession {
 
 	@Override
 	public boolean authenticate(String signInId, String password) {
-
 		try {
 			this.id = this.userDao.findBySignInIdAndPassword(signInId, password).getId();
 			return true;

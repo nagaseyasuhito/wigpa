@@ -1,6 +1,5 @@
 package com.github.nagaseyasuhito.wigpa.wicket.component;
 
-
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.util.convert.IConverter;

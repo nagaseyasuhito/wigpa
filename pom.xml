@@ -7,6 +7,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 
 	<name>wigpa</name>
+	<url>http://github.com/nagaseyasuhito/wigpa</url>
 	<description>Wigpa is toolset of Wicket, JPA2.0 and Guice.</description>
 	<organization>
 		<name>nagaseyasuhito Architekt works.</name>
@@ -22,6 +23,12 @@
 			<url>file://${basedir}/nagaseyasuhito.github.com/m2-repo/</url>
 		</snapshotRepository>
 	</distributionManagement>
+
+	<scm>
+		<url>https://github.com/nagaseyasuhito/wigpa.git</url>
+		<connection>https://github.com/nagaseyasuhito/wigpa.git</connection>
+		<developerConnection>https://github.com/nagaseyasuhito/wigpa.git</developerConnection>
+	</scm>
 
 	<repositories>
 		<repository>
@@ -58,7 +65,7 @@
 	</build>
 
 	<properties>
-		<org.apache.wicket.version>1.5-RC5.1</org.apache.wicket.version>
+		<org.apache.wicket.version>1.5-RC7</org.apache.wicket.version>
 		<org.hibernate.hibernate-entitymanager.version>3.6.7.Final</org.hibernate.hibernate-entitymanager.version>
 		<org.apache.commons.commons-lang3.version>3.0.1</org.apache.commons.commons-lang3.version>
 		<javassist.javassist.version>3.12.1.GA</javassist.javassist.version>
