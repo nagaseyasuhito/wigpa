@@ -4,7 +4,7 @@
 	<groupId>com.github.nagaseyasuhito</groupId>
 	<artifactId>wigpa</artifactId>
 	<packaging>jar</packaging>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 
 	<name>wigpa</name>
 	<url>http://github.com/nagaseyasuhito/wigpa</url>
