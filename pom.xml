@@ -4,7 +4,7 @@
 	<groupId>com.github.nagaseyasuhito</groupId>
 	<artifactId>wigpa</artifactId>
 	<packaging>jar</packaging>
-	<version>0.0.1</version>
+	<version>0.0.2</version>
 
 	<name>wigpa</name>
 	<url>http://github.com/nagaseyasuhito/wigpa</url>
@@ -156,18 +156,17 @@
 			<artifactId>logback-classic</artifactId>
 			<version>${ch.qos.logback.logback-classic.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.junit.version}</version>
+		</dependency>
 
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
 			<version>2.5</version>
 			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>${junit.junit.version}</version>
-			<scope>test</scope>
 		</dependency>
 	</dependencies>
 </project>
