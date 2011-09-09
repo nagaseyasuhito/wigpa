@@ -8,6 +8,8 @@ import java.util.Map;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
+import javax.inject.Inject;
+import javax.inject.Provider;
 import javax.persistence.EntityManager;
 import javax.persistence.Transient;
 import javax.persistence.TypedQuery;
@@ -26,8 +28,6 @@ import com.github.nagaseyasuhito.wigpa.persist.dao.PredicateBuilder.Null;
 import com.github.nagaseyasuhito.wigpa.persist.dao.PredicateBuilder.Or;
 import com.github.nagaseyasuhito.wigpa.persist.entity.BaseEntity;
 import com.google.common.collect.Lists;
-import com.google.inject.Inject;
-import com.google.inject.Provider;
 
 public abstract class BaseDaoImpl<T extends BaseEntity> implements BaseDao<T> {
 
@@ -104,7 +104,8 @@ public abstract class BaseDaoImpl<T extends BaseEntity> implements BaseDao<T> {
 		}
 
 		if (property instanceof Between<?>) {
-			return this.processNotPredicate(property, criteriaBuilder, criteriaBuilder.between(path.<Comparable> get(propertyName), ((Between<?>) property).getFrom(), ((Between<?>) property).getTo()));
+			return this
+					.processNotPredicate(property, criteriaBuilder, criteriaBuilder.between(path.<Comparable> get(propertyName), ((Between<?>) property).getFrom(), ((Between<?>) property).getTo()));
 		}
 
 		if (property instanceof Collection<?>) {
