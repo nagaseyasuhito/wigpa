@@ -17,7 +17,7 @@ public abstract class WigpaWebSession extends AuthenticatedWebSession {
 		Injector.get().inject(this);
 	}
 
-	public boolean authenticate(CharSequence username, CharSequence password) {
-		return this.authenticate(username == null ? null : username.toString(), password == null ? null : password.toString());
+	public boolean signIn(CharSequence username, CharSequence password) {
+		return this.signIn(username == null ? null : username.toString(), password == null ? null : password.toString());
 	}
 }
