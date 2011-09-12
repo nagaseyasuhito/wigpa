@@ -5,10 +5,19 @@ import org.apache.wicket.injection.Injector;
 import org.apache.wicket.request.Request;
 
 public abstract class WigpaWebSession extends AuthenticatedWebSession {
+	private static final long serialVersionUID = 1L;
+
+	public static WigpaWebSession get() {
+		return (WigpaWebSession) AuthenticatedWebSession.get();
+	}
 
 	public WigpaWebSession(Request request) {
 		super(request);
 
 		Injector.get().inject(this);
+	}
+
+	public boolean authenticate(CharSequence username, CharSequence password) {
+		return this.authenticate(username == null ? null : username.toString(), password == null ? null : password.toString());
 	}
 }
