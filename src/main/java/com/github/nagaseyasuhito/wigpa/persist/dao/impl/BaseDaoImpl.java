@@ -104,8 +104,9 @@ public abstract class BaseDaoImpl<T extends BaseEntity> implements BaseDao<T> {
 		}
 
 		if (property instanceof Between<?>) {
-			return this
-					.processNotPredicate(property, criteriaBuilder, criteriaBuilder.between(path.<Comparable> get(propertyName), ((Between<?>) property).getFrom(), ((Between<?>) property).getTo()));
+			Comparable<?> from = ((Between<?>) property).getFrom();
+			Comparable<?> to = ((Between<?>) property).getTo();
+			return this.processNotPredicate(property, criteriaBuilder, criteriaBuilder.between(path.<Comparable> get(propertyName), from, to));
 		}
 
 		if (property instanceof Collection<?>) {
@@ -141,40 +142,7 @@ public abstract class BaseDaoImpl<T extends BaseEntity> implements BaseDao<T> {
 	}
 
 	private <X> Root<X> buildQuery(T criteria, CriteriaBuilder criteriaBuilder, CriteriaQuery<?> criteriaQuery, Root<X> root) {
-		Class<?> criteriaClass = criteria.getClass();
-
-		List<Predicate> predicates = Lists.newArrayList();
-
-		while (criteriaClass != null) {
-			for (Field field : criteriaClass.getDeclaredFields()) {
-				if (!this.isProperty(field)) {
-					continue;
-				}
-
-				boolean accessible = field.isAccessible();
-
-				Object property = null;
-				try {
-					field.setAccessible(true);
-					property = field.get(criteria);
-				} catch (IllegalArgumentException e) {
-					throw new RuntimeException(e);
-				} catch (IllegalAccessException e) {
-					throw new RuntimeException(e);
-				} finally {
-					field.setAccessible(accessible);
-				}
-
-				Predicate predicate = this.buildExpression(criteriaBuilder, criteriaQuery, root, field.getName(), property);
-				if (predicate != null) {
-					predicates.add(predicate);
-				}
-			}
-
-			criteriaClass = criteriaClass.getSuperclass();
-		}
-
-		criteriaQuery.where(predicates.toArray(new Predicate[0]));
+		criteriaQuery.where(this.buildChildQuery(criteria, criteriaBuilder, criteriaQuery, root).toArray(new Predicate[0]));
 
 		return root;
 	}
@@ -201,22 +169,7 @@ public abstract class BaseDaoImpl<T extends BaseEntity> implements BaseDao<T> {
 
 	@Override
 	public List<T> findByCriteria(T criteria, SortedMap<String, Boolean> orders) {
-		EntityManager entityManager = this.entityManager.get();
-		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-		CriteriaQuery<T> criteriaQuery = criteriaBuilder.createQuery(this.getEntityClass());
-		Root<T> root = criteriaQuery.from(this.getEntityClass());
-
-		for (Map.Entry<String, Boolean> entry : orders.entrySet()) {
-			if (entry.getValue()) {
-				criteriaQuery.orderBy(criteriaBuilder.asc(root.get(entry.getKey())));
-			} else {
-				criteriaQuery.orderBy(criteriaBuilder.desc(root.get(entry.getKey())));
-			}
-		}
-
-		TypedQuery<T> query = entityManager.createQuery(criteriaQuery.select(this.buildQuery(criteria, criteriaBuilder, criteriaQuery, root)));
-
-		return query.getResultList();
+		return this.findByCriteria(criteria, orders, -1, -1);
 	}
 
 	@Override
@@ -235,8 +188,12 @@ public abstract class BaseDaoImpl<T extends BaseEntity> implements BaseDao<T> {
 		}
 
 		TypedQuery<T> query = entityManager.createQuery(criteriaQuery.select(this.buildQuery(criteria, criteriaBuilder, criteriaQuery, root)));
-		query.setFirstResult(firstResult);
-		query.setMaxResults(maxResults);
+		if (firstResult >= 0) {
+			query.setFirstResult(firstResult);
+		}
+		if (maxResults >= 0) {
+			query.setMaxResults(maxResults);
+		}
 		return query.getResultList();
 	}
 
