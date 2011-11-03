@@ -39,10 +39,6 @@
 			<id>guice</id>
 			<url>http://guice-maven.googlecode.com/svn/trunk</url>
 		</repository>
-		<repository>
-			<id>jqwicket</id>
-			<url>http://jqwicket.googlecode.com/svn/m2-repo/releases/</url>
-		</repository>
 	</repositories>
 
 	<build>
@@ -101,8 +97,8 @@
 	</build>
 
 	<properties>
-		<org.apache.wicket.version>1.5.0</org.apache.wicket.version>
-		<org.hibernate.hibernate-entitymanager.version>3.6.7.Final</org.hibernate.hibernate-entitymanager.version>
+		<org.apache.wicket.version>1.5.2</org.apache.wicket.version>
+		<org.hibernate.hibernate-entitymanager.version>3.6.8.Final</org.hibernate.hibernate-entitymanager.version>
 		<org.apache.commons.commons-lang3.version>3.0.1</org.apache.commons.commons-lang3.version>
 		<javassist.javassist.version>3.12.1.GA</javassist.javassist.version>
 		<com.google.guava.guava.version>r09</com.google.guava.guava.version>
@@ -111,7 +107,6 @@
 		<junit.junit.version>4.8.2</junit.junit.version>
 		<com.wideplay.warp.persist.version>2.0</com.wideplay.warp.persist.version>
 		<com.ibm.icu.icu4j.version>4.8.1</com.ibm.icu.icu4j.version>
-		<com.google.code.jqwicket.jqwicket.version>0.6</com.google.code.jqwicket.jqwicket.version>
 	</properties>
 
 	<dependencies>
@@ -134,11 +129,6 @@
 			<groupId>org.apache.wicket</groupId>
 			<artifactId>wicket-guice</artifactId>
 			<version>${org.apache.wicket.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.google.code.jqwicket</groupId>
-			<artifactId>jqwicket</artifactId>
-			<version>${com.google.code.jqwicket.jqwicket.version}</version>
 		</dependency>
 
 		<dependency>
